@@ -1,0 +1,12 @@
+function Q=cuad_gauss_c(f,a,b,L,n)
+	% L numero de subintervalos
+	% n cantidad de puntos
+	[xg,w] = gauss_wx(n);
+	x = linspace(a,b,L+1);
+	h = (b-a)/L;
+	Q = 0;
+	for i = 1:L
+		t = h/2*(xg+1)+x(i);
+		Q += h/2*(w'*f(t));
+	end
+end
